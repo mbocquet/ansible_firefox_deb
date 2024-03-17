@@ -1,0 +1,44 @@
+---
+# tasks file for firefox_deb
+- name: APT keys folder
+  ansible.builtin.file:
+    path: "{{ mozilla_key_dest | dirname }}"
+    state: directory
+    mode: 0755
+  tags:
+    - mozilla
+    - install
+    - apt
+    - key
+    - folder
+
+- name: APT key
+  ansible.builtin.get_url:
+    url: "{{ mozilla_key_url }}"
+    dest: "{{ mozilla_key_dest }}"
+    mode: 0644
+  tags:
+    - mozilla
+    - install
+    - apt
+    - key
+
+- name: APT repository
+  ansible.builtin.template:
+    src: mozilla.list.j2
+    dest: /etc/apt/sources.list.d/mozilla.list
+    mode: 0644
+  tags:
+    - mozilla
+    - install
+    - apt
+    - repository
+
+- name: Package
+  ansible.builtin.package:
+    name: "{{ mozilla_firefox_packages }}"
+    update_cache: true
+  tags:
+    - mozilla
+    - install
+    - package

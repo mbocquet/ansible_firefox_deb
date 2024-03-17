@@ -1,0 +1,23 @@
+galaxy_info:
+  author: Mathias BOCQUET
+  description: Install Firefox on Debian from official Mozilla repositories
+
+  issue_tracker_url: https://git.sekoya.org/mb/firefox_deb/issues
+
+  license: GPLv3
+
+  min_ansible_version: "2.4"
+
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+        - bookworm
+
+  galaxy_tags:
+    - mozilla
+    - firefox
+    - desktop
+    - browser
+
+dependencies: []
