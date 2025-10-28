@@ -4,7 +4,7 @@
   ansible.builtin.file:
     path: "{{ firefox_key_dest | dirname }}"
     state: directory
-    mode: 0755
+    mode: "0755"
   tags:
     - firefox
     - install
@@ -16,7 +16,7 @@
   ansible.builtin.get_url:
     url: "{{ firefox_key_url }}"
     dest: "{{ firefox_key_dest }}"
-    mode: 0644
+    mode: "0644"
   tags:
     - firefox
     - install
@@ -27,7 +27,7 @@
   ansible.builtin.template:
     src: mozilla.list.j2
     dest: /etc/apt/sources.list.d/mozilla.list
-    mode: 0644
+    mode: "0644"
   tags:
     - firefox
     - install
